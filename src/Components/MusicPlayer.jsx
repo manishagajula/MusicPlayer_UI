@@ -53,7 +53,7 @@ export const MusicPlayer = ({
     setIsMuted(!isMuted);
   };
 
-  const handleSongChange = (newIndex) => {
+  const handleSongChange = (newIndex, shouldPlay) => {
     setSongIndex(newIndex);
     setSelectedObj(selectedfilter[newIndex]);
     audioRef.current.src = selectedfilter[newIndex].url;
@@ -61,11 +61,15 @@ export const MusicPlayer = ({
     audioRef.current.addEventListener(
       "loadedmetadata",
       () => {
-        audioRef.current.play();
+        if (shouldPlay) {
+          audioRef.current.play();
+        } else {
+          audioRef.current.pause();
+        }
+        setPlayAudio(shouldPlay);
       },
       { once: true }
     );
-    setPlayAudio(true);
   };
 
   const handlePlay = () => {
