@@ -31,6 +31,7 @@ export const MusicPlayer = ({
     audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       audioRef?.current?.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, []);
