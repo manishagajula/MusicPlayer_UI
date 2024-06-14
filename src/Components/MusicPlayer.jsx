@@ -184,7 +184,6 @@ export const MusicPlayer = ({
           src={selectedObj.url}
           ref={audioRef}
           className="hidden"
-          // autoPlay={true}
         ></audio>
       </div>
     </div>
